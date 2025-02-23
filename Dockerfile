@@ -1,2 +1,8 @@
 FROM node
-LABEL app=my-node-app
+LABEL app=node-app
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node" , "./bin/www"]
